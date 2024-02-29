@@ -1,40 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-type SessionUuid = string | null;
-const SESSION_UUID = 'session_uuid';
+type Credentials = { sessionUuid: string; username: string; password: string } | null;
+const CREDENTIALS = 'credentials';
 
 export const useSecureStorage = () => {
-  const [uuid, setUuid] = useState<SessionUuid>(null);
+  const [credentials, setCreds] = useState<Credentials>(null);
 
-  const getSessionUuid = async () => {
+  const getCredentials = useCallback(async () => {
     try {
-      const sessionUuid = await EncryptedStorage.getItem(SESSION_UUID);
-      setUuid(sessionUuid);
-      return uuid;
+      const data = await EncryptedStorage.getItem(CREDENTIALS);
+      if (!data) {
+        setCreds(null);
+      }
+      setCreds(JSON.parse(data as string) as Credentials);
+      return credentials;
     } catch (e) {
       console.error(e);
-      setUuid(null);
+      setCreds(null);
     }
-  };
+  }, [credentials]);
 
-  const setSessionUuid = async (data: string) => {
+  const setCredentials = async (data: Credentials) => {
     try {
-      await EncryptedStorage.setItem(SESSION_UUID, data);
-      setUuid(data);
-      return uuid;
+      await EncryptedStorage.setItem(CREDENTIALS, JSON.stringify(data));
+      setCreds(data);
+      return credentials;
     } catch (e) {
       console.error(e);
     }
   };
 
   useEffect(() => {
-    getSessionUuid();
-  }, [getSessionUuid]);
+    getCredentials();
+  }, [getCredentials]);
 
   return {
-    setSessionUuid,
-    getSessionUuid,
-    uuid,
+    setCredentials,
+    getCredentials,
+    credentials,
   };
 };
