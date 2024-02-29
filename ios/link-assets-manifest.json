@@ -1,0 +1,177 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/shared/assets/fonts/Lobster-Regular.ttf",
+      "sha1": "42c276b0639e40f529755313253e14a6e5d3fe6a"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Black.otf",
+      "sha1": "0334139b06a81298e11ac62a53a3b554fb855b6d"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Bold.otf",
+      "sha1": "d2d7649212d0e1bfb37df91c1cad8822361568cc"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Heavy.otf",
+      "sha1": "f278f6dc440c54765ee8b0e38e2982d2a576bd52"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Light.otf",
+      "sha1": "a73fc4dd68d7e877aa86d459053ca7142be201d0"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Medium.otf",
+      "sha1": "040e8cfe8333675da3f71c0e87a88db532b034cc"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Regular.otf",
+      "sha1": "8d5e66a0f8492e63a2932f59c7c7e914a21289f6"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Semibold.otf",
+      "sha1": "764f580272596a8ea395a5692c6b433e9a823808"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Thin.otf",
+      "sha1": "6b635a0177b25a319c11f304004cc26418f78713"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Display-Ultralight.otf",
+      "sha1": "e4ff82278f0dd5da237b09cc7f5b86f2341d7d8c"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Bold.otf",
+      "sha1": "c2c22bf9ea59cb43ca1e51892cd220f2638bab77"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-BoldItalic.otf",
+      "sha1": "906b56aeab6a45d6d8ce0b78570869e304172ce9"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Heavy.otf",
+      "sha1": "d7958fa7d4776c7c9190f785c029c7590e793c32"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-HeavyItalic.otf",
+      "sha1": "d8cc21d23f3ef11eb3953903f4ef3379eebd5d4f"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Light.otf",
+      "sha1": "5744f7757ea5664843a0a5ff87ff2113a9d97b90"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-LightItalic.otf",
+      "sha1": "f7bb5d33ae5f915b599e7e6a9d73e232130b1f63"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Medium.otf",
+      "sha1": "0be7269789eadecdba16dde500b85228e7e8ed12"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-MediumItalic.otf",
+      "sha1": "5247fcc283f1260055abc137497f18b914641fc2"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Regular.otf",
+      "sha1": "ed2ed3d92821616d1dc1f4a4e93df8cd3b03dd06"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-RegularItalic.otf",
+      "sha1": "ae8a6bac795d9a0b4f8a15508c410fe50870955a"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-Semibold.otf",
+      "sha1": "310edad90b9418f7b8b25862f0b3a6c107de6d9c"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-Compact-Text-SemiboldItalic.otf",
+      "sha1": "dc0df5c15c3fec09d3b8207825b757b5f236fe7b"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Black.otf",
+      "sha1": "4e6b73c7a42ba983d88fb429b9814d66bfebe58e"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Bold.otf",
+      "sha1": "ea872c636f3043495b62cb953a7b3f8895432ef6"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Heavy.otf",
+      "sha1": "6abb5278a50c4be519942820cedb8399ed2bb7fa"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Light.otf",
+      "sha1": "5b6e0d2070f75113192fbc297974e43589b69af7"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Medium.otf",
+      "sha1": "914b462106895df3c8de26d9425d7400931cbc00"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Regular.otf",
+      "sha1": "70be8a2e50a1debf83c1a850dc65e3f0e3c016f6"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Semibold.otf",
+      "sha1": "95ae29e6e62228dbd7290c640bc52e9bcad2db08"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Thin.otf",
+      "sha1": "00187ae17b650555fcabf67901544f2a845bbaff"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Display-Ultralight.otf",
+      "sha1": "2801f5883399e14f41ea59f44dc59b42844982bd"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Bold.otf",
+      "sha1": "82c72b8f419e2801c921e4add7d11f4143da06b6"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-BoldItalic.otf",
+      "sha1": "9638b3522682e330c96a9a8961559c35c7bfd78e"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Heavy.otf",
+      "sha1": "7f854163cef2d13061373472259aebe6214c7800"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-HeavyItalic.otf",
+      "sha1": "0eb54a4b3c2bac8c7765117d81e3844a1e3d540d"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Light.otf",
+      "sha1": "b9241af921b62b9c3c2091931bbdb18698ec86c1"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-LightItalic.otf",
+      "sha1": "fac1d3d1b229ea5f7ee71f697de7639ef5e33595"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Medium.otf",
+      "sha1": "e07420989d6d407dcce113f3f23874ced94134b5"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-MediumItalic.otf",
+      "sha1": "c86b66dff3ab4415fa3861285a6dfa29aa797e97"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Regular.otf",
+      "sha1": "5578b5e908e0ace512e7f970509dc2a5edb880c8"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-RegularItalic.otf",
+      "sha1": "a3b193a469571cbd40c5ba43d81a8077e954abab"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-Semibold.otf",
+      "sha1": "785329860ac390e9e3af43ff6c2a08fa4474419b"
+    },
+    {
+      "path": "src/shared/assets/fonts/SF-UI-Text-SemiboldItalic.otf",
+      "sha1": "5c0951e18dff1ab6a0716d5751a611fb56bdd44f"
+    }
+  ]
+}
