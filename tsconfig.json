@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es2020",
+    "module": "ESNext",
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@screens/*": ["screens/*"],
+      "@widgets/*": ["widgets/*"],
+      "@features/*": ["features/*"],
+      "@entities/*": ["entities/*"],
+      "@shared/*": ["shared/*"]
+    }
+  },
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "exclude": ["__tests__/**/*-test.ts"],
+//  "include": [
+//    ".eslintrc.js",
+//    "src/**/*"
+//  ]
+}
