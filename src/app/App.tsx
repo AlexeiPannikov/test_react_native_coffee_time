@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
-import { Platform, SafeAreaView, StatusBar, Text } from 'react-native';
+import { Platform, SafeAreaView, StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import RootNavigator from '@app/navigators/RootNavigator.tsx';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import { store } from '@app/store/store.ts';
 
 function App(): React.JSX.Element {
   useEffect(() => {
@@ -10,10 +14,13 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <Text style={{ color: 'blue' }}>Coffee Time</Text>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </Provider>
   );
 }
 
