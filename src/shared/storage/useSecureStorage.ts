@@ -7,7 +7,7 @@ const CREDENTIALS = 'credentials';
 export const useSecureStorage = () => {
   const [credentials, setCreds] = useState<Credentials>(null);
 
-  const getCredentials = useCallback(async () => {
+  const getCredentials = async () => {
     try {
       const data = await EncryptedStorage.getItem(CREDENTIALS);
       if (!data) {
@@ -19,7 +19,7 @@ export const useSecureStorage = () => {
       console.error(e);
       setCreds(null);
     }
-  }, [credentials]);
+  };
 
   const setCredentials = async (data: Credentials) => {
     try {
@@ -30,10 +30,6 @@ export const useSecureStorage = () => {
       console.error(e);
     }
   };
-
-  useEffect(() => {
-    getCredentials();
-  }, [getCredentials]);
 
   return {
     setCredentials,
