@@ -16,7 +16,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2020,
+    ecmaVersion: 'ESNext',
     sourceType: 'module',
     parser: '@typescript-eslint/parser',
     project: './tsconfig.json',

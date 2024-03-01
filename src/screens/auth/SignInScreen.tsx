@@ -1,14 +1,21 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
-import { AuthStackParamList } from '@/shared';
+import { AuthStackParamList, UiButton } from '@/shared';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AuthScreenTemplate } from '@screens/auth/AuthScreenTemplate.tsx';
+import { View } from 'react-native';
+import { SignInForm } from '@/features';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'SignIn'>;
 
-export const SignInScreen = (props: Props) => {
+export const SignInScreen = ({ navigation: { navigate } }: Props) => {
   return (
-    <SafeAreaView>
-      <Text style={{ color: 'blue', fontSize: 50 }}>Sign In</Text>
-    </SafeAreaView>
+    <AuthScreenTemplate>
+      <View>
+        <SignInForm />
+        <UiButton type="text" style={{ marginTop: 30 }} onPress={() => navigate('SignUp')}>
+          Регистрация
+        </UiButton>
+      </View>
+    </AuthScreenTemplate>
   );
 };

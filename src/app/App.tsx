@@ -5,6 +5,9 @@ import RootNavigator from '@app/navigators/RootNavigator.tsx';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { store } from '@app/store/store.ts';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { ThemeProvider } from '@/shared';
+import Toast from 'react-native-toast-message';
 
 function App(): React.JSX.Element {
   useEffect(() => {
@@ -14,13 +17,18 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <Provider store={store}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      </SafeAreaView>
-    </Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <ThemeProvider>
+          <SafeAreaView style={{ flex: 1 }}>
+            <NavigationContainer>
+              <RootNavigator />
+            </NavigationContainer>
+          </SafeAreaView>
+          <Toast />
+        </ThemeProvider>
+      </Provider>
+    </GestureHandlerRootView>
   );
 }
 

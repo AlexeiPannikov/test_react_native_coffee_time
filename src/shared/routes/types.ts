@@ -6,6 +6,7 @@ export interface RootStackParamList extends ParamListBase {
 }
 
 export interface AuthStackParamList extends ParamListBase {
+  Choose: undefined;
   SignIn: undefined;
   SignUp: undefined;
 }

@@ -7,16 +7,16 @@ export interface ITheme {
     onBackgroundVariant: string;
     outline: string;
     outlineVariant: string;
+    error: string;
   };
   font: {
     families: {
       [p: string]: string;
     };
     sizes: {
-      headerLarge: number;
-      headerSmall: number;
-      bodyLarge: number;
-      bodySmall: number;
+      headline1: number;
+      body1: number;
+      body2: number;
     };
   };
 }
@@ -34,6 +34,7 @@ export const lightTheme: ITheme = {
     onBackgroundVariant: '#BBBBBB',
     outline: '#ffffff',
     outlineVariant: '#EAEAEA',
+    error: 'red',
   },
   font: {
     families: {
@@ -41,10 +42,9 @@ export const lightTheme: ITheme = {
       'Lobster-Regular': 'Lobster-Regular',
     },
     sizes: {
-      headerLarge: 20,
-      headerSmall: 14,
-      bodyLarge: 14,
-      bodySmall: 14,
+      headline1: 64,
+      body1: 18,
+      body2: 16,
     },
   },
 };

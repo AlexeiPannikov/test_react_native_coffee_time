@@ -1,10 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthStackParamList } from '@/shared';
+import { AuthStackParamList, UiButton } from '@/shared';
+import { AuthScreenTemplate } from '@screens/auth/AuthScreenTemplate.tsx';
+import { SignUpForm } from '@/features';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'SignUp'>;
 
-export const SignUpScreen = (props: Props) => {
-  return <Text>Sign Up</Text>;
+export const SignUpScreen = ({ navigation: { navigate } }: Props) => {
+  return (
+    <AuthScreenTemplate>
+      <SignUpForm onSuccessSignUp={() => navigate('SignIn')} />
+      <UiButton type="text" style={{ marginTop: 30 }} onPress={() => navigate('SignIn')}>
+        Войти
+      </UiButton>
+    </AuthScreenTemplate>
+  );
 };

@@ -1,1 +1,1 @@
-export * from './useSecureStorage.ts';
+export * from './SecureStorage.ts';
