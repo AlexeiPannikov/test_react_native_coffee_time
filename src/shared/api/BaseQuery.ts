@@ -6,19 +6,33 @@ import { API_URL } from '@env';
 import { removeUserAction, setUserAction } from '@/entities';
 
 const mutex = new Mutex();
-const baseQuery = fetchBaseQuery({ baseUrl: API_URL });
+const baseQuery = fetchBaseQuery({
+  baseUrl: API_URL,
+  prepareHeaders: (headers) => {
+    headers.set('Content-Type', 'application/json');
+  },
+});
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   await mutex.waitForUnlock();
+  const credentials = await SecureStorage.getCredentials();
+  if (!api.endpoint.includes('authorization') && !api.endpoint.includes('registration')) {
+    if (typeof args === 'object' && 'body' in args) {
+      args.body['sessionId'] = `"${credentials?.sessionUuid}"`;
+    }
+    if (typeof args === 'object') {
+      args.body = JSON.stringify(JSON.parse(`"${credentials?.sessionUuid}"`));
+    }
+  }
   let result = await baseQuery(args, api, extraOptions);
+  console.log(result.error);
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
       try {
-        const credentials = await SecureStorage.getCredentials();
         if (!credentials) {
           await mutex.waitForUnlock();
           result = await baseQuery(args, api, extraOptions);

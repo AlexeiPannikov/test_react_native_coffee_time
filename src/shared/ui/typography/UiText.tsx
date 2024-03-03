@@ -26,9 +26,10 @@ export const UiText = ({
       style={[
         {
           color: colors.onBackground,
-          fontFamily: type?.includes('headline')
-            ? font.families['Lobster-Regular']
-            : font.families['SF-UI-Text-Regular'],
+          fontFamily: type?.includes('headline1')
+            ? font.families['Lobster']
+            : font.families['SF-UI-Text'],
+          fontWeight: '400',
           fontSize:
             type !== undefined ? staticModerateScale(font.sizes[type]) : staticModerateScale(14),
         },

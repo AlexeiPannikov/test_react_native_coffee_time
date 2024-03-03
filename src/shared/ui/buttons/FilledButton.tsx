@@ -23,7 +23,6 @@ export const FilledButton = (props: IButtonCommonPropsWithChildren) => {
         style={[styles.container, { backgroundColor: colors.primary }]}
         disabled={props.disabled || props.loading}
         onPress={() => {
-          console.log('onPress');
           props.onPress();
         }}
       >
