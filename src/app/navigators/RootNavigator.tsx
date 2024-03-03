@@ -4,14 +4,14 @@ import { type RootStackParamList, SecureStorage } from '@/shared';
 import { AuthNavigator } from '@app/navigators/AuthNavigator.tsx';
 import { MainScreen } from '@/screens';
 import { useAuth } from '@/features';
-import { useAppSelector } from '@shared/hooks';
+import { useUser } from '@/entities';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const [initializing, setInitializing] = useState(true);
   const { authorization } = useAuth();
-  const user = useAppSelector((state) => state.auth.user);
+  const { user } = useUser();
 
   useEffect(() => {
     const init = async () => {

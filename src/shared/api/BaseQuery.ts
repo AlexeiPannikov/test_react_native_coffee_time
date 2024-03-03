@@ -3,6 +3,7 @@ import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolk
 import { Mutex } from 'async-mutex';
 import { baseApi, SecureStorage } from '@/shared';
 import { API_URL } from '@env';
+import { removeUserAction, setUserAction } from '@/entities';
 
 const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({ baseUrl: API_URL });
@@ -36,9 +37,11 @@ export const baseQueryWithReauth: BaseQueryFn<
             ...credentials,
             sessionUuid: refreshResult.data as string,
           });
+          api.dispatch(setUserAction({ email: credentials.email }));
           result = await baseQuery(args, api, extraOptions);
         } else {
           api.dispatch(baseApi.util?.invalidateTags(['User']));
+          api.dispatch(removeUserAction());
           await SecureStorage.clearAll();
         }
       } finally {

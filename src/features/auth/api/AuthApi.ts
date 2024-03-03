@@ -1,8 +1,7 @@
 import { AuthorizationRequest, baseApi, SecureStorage } from '@/shared';
 import { RegistrationRequest } from '@/shared';
-import { User } from '@features/auth/model/User.ts';
-import { removeUser, setUser } from '@/features';
-
+import { User } from '@entities/user/model/User.ts';
+import { removeUserAction, setUserAction } from '@/entities';
 type SessionUuid = string;
 
 const authApi = baseApi.injectEndpoints({
@@ -24,9 +23,9 @@ const authApi = baseApi.injectEndpoints({
       onQueryStarted: async (arg, { queryFulfilled, dispatch }) => {
         try {
           await queryFulfilled;
-          dispatch(setUser(<User>{ email: arg.email }));
+          dispatch(setUserAction(<User>{ email: arg.email }));
         } catch (e) {
-          dispatch(removeUser());
+          dispatch(removeUserAction());
         }
       },
       transformResponse: async (res: SessionUuid, meta, arg) => {
