@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren, ReactElement } from 'react';
 import { type ViewProps } from 'react-native';
 import { FilledButton } from '@shared/ui/buttons/FilledButton.tsx';
 import { TextButton } from '@shared/ui/buttons/TextButton.tsx';
@@ -8,19 +8,23 @@ export interface IUiButtonProps extends ViewProps {
   onPress?: () => unknown;
   disabled?: boolean;
   loading?: boolean;
+  color?: string;
+  fontSize?: number;
+  iconRight?: ReactElement;
 }
 
 interface IButtonCommonProps extends ViewProps {
   onPress: () => void;
   disabled: boolean;
   loading?: boolean;
+  color?: string;
+  fontSize?: number;
+  iconRight?: ReactElement;
 }
 
 export interface IButtonCommonPropsWithChildren extends PropsWithChildren<IButtonCommonProps> {}
 
 export const UiButton = (props: PropsWithChildren<IUiButtonProps>) => {
-  if (typeof props.children !== 'string') throw new Error('children must be a string');
-
   const onPress = () => {
     if (props.disabled) {
       return;

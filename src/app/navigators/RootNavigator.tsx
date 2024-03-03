@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { type RootStackParamList, SecureStorage, staticModerateScale, useTheme } from '@/shared';
 import { AuthNavigator } from '@app/navigators/AuthNavigator.tsx';
-import { MainScreen } from '@/screens';
+import { CaffeListScreen } from '@/screens';
 import { useAuth } from '@/features';
 import { useUser } from '@/entities';
 import { Header } from '@app/navigators/Header.tsx';
+import { CaffeScreen } from '@screens/caffe';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -47,7 +48,10 @@ const RootNavigator = () => {
       {!user ? (
         <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }} />
       ) : (
-        <Stack.Screen name="Main" component={MainScreen} />
+        <>
+          <Stack.Screen name="CaffeList" component={CaffeListScreen} />
+          <Stack.Screen name="Caffe" component={CaffeScreen} />
+        </>
       )}
     </Stack.Navigator>
   );

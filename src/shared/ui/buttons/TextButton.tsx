@@ -2,7 +2,7 @@ import React from 'react';
 import { type IButtonCommonPropsWithChildren } from '@shared/ui';
 import { useTheme } from '@shared/theme';
 import Animated from 'react-native-reanimated';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export const TextButton = (props: IButtonCommonPropsWithChildren) => {
   const {
@@ -16,21 +16,26 @@ export const TextButton = (props: IButtonCommonPropsWithChildren) => {
     >
       <TouchableOpacity
         activeOpacity={0.8}
+        hitSlop={10}
         style={styles.container}
         disabled={props.disabled}
         onPress={() => {
-          console.log('onPress');
           props.onPress();
         }}
       >
         <Text
           style={[
             styles.text,
-            { color: colors.primary, fontFamily: font.families['SF-UI-Text-Regular'] },
+            {
+              color: props.color || colors.primary,
+              fontFamily: font.families['SF-UI-Text'],
+              fontSize: props.fontSize || 18,
+            },
           ]}
         >
           {props.children}
         </Text>
+        <View>{props.iconRight}</View>
       </TouchableOpacity>
     </Animated.View>
   );
@@ -44,7 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 18,
     fontWeight: '600',
   },
 });

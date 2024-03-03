@@ -50,8 +50,8 @@ export const lightTheme: ITheme = {
     sizes: {
       headline1: 64,
       headline2: 20,
-      body1: 18,
-      body2: 16,
+      body1: 16,
+      body2: 14,
     },
   },
 };

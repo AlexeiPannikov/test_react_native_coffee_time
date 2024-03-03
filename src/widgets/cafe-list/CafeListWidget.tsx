@@ -1,9 +1,12 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { CafeListItem, useGetCafeListQuery } from '@/entities';
-import { UiButton, useTheme } from '@/shared';
+import { RootStackParamList, UiButton, useTheme } from '@/shared';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export const CafeListWidget = () => {
+type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
+
+export const CafeListWidget = (props: Props) => {
   const { data, isLoading, refetch } = useGetCafeListQuery(null);
   const {
     theme: { colors },
@@ -14,7 +17,7 @@ export const CafeListWidget = () => {
   ) : data?.length ? (
     <FlatList
       data={data}
-      renderItem={({ item }) => <CafeListItem cafe={item} />}
+      renderItem={({ item }) => <CafeListItem {...props} cafe={item} />}
       keyExtractor={(item) => item.id}
       refreshControl={
         <RefreshControl

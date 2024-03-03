@@ -20,7 +20,7 @@ export const FilledButton = (props: IButtonCommonPropsWithChildren) => {
     >
       <TouchableOpacity
         activeOpacity={0.8}
-        style={[styles.container, { backgroundColor: colors.primary }]}
+        style={[styles.container, { backgroundColor: props.color || colors.primary }]}
         disabled={props.disabled || props.loading}
         onPress={() => {
           props.onPress();
@@ -29,7 +29,11 @@ export const FilledButton = (props: IButtonCommonPropsWithChildren) => {
         <Text
           style={[
             styles.text,
-            { color: colors.onPrimary, fontFamily: font.families['SF-UI-Text-Regular'] },
+            {
+              color: colors.onPrimary,
+              fontFamily: font.families['SF-UI-Text'],
+              fontSize: props.fontSize || staticModerateScale(18),
+            },
           ]}
         >
           {props.loading ? (
@@ -38,6 +42,7 @@ export const FilledButton = (props: IButtonCommonPropsWithChildren) => {
             props.children
           )}
         </Text>
+        {props.iconRight}
       </TouchableOpacity>
     </Animated.View>
   );
@@ -55,11 +60,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: staticModerateScale(5),
-    paddingHorizontal: staticModerateScale(10),
+    paddingVertical: 5,
+    paddingHorizontal: 10,
   },
   text: {
-    fontSize: staticModerateScale(18),
     fontWeight: '600',
   },
 });
