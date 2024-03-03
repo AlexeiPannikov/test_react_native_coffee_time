@@ -3,7 +3,7 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { IconBack, staticModerateScale, staticVerticalScale, UiText, useTheme } from '@/shared';
 import React from 'react';
 
-export const Header = ({ navigation, progress, back }: StackHeaderProps) => {
+export const Header = ({ navigation, progress }: StackHeaderProps) => {
   const {
     theme: { font, colors },
   } = useTheme();
@@ -15,7 +15,6 @@ export const Header = ({ navigation, progress, back }: StackHeaderProps) => {
           hitSlop={20}
           style={styles.iconBack}
           onPress={() => {
-            console.log('++++');
             navigation.goBack();
           }}
         >
