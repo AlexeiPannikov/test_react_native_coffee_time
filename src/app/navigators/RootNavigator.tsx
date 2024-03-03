@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation//native-stack';
-import { type RootStackParamList, SecureStorage } from '@/shared';
+import { createStackNavigator } from '@react-navigation/stack';
+import { type RootStackParamList, SecureStorage, staticModerateScale, useTheme } from '@/shared';
 import { AuthNavigator } from '@app/navigators/AuthNavigator.tsx';
 import { MainScreen } from '@/screens';
 import { useAuth } from '@/features';
 import { useUser } from '@/entities';
+import { Header } from '@app/navigators/Header.tsx';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const [initializing, setInitializing] = useState(true);
   const { authorization } = useAuth();
   const { user } = useUser();
+  const {
+    theme: { colors, font },
+  } = useTheme();
 
   useEffect(() => {
     const init = async () => {
@@ -33,11 +37,17 @@ const RootNavigator = () => {
   if (initializing) return null;
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        cardStyle: { backgroundColor: colors.background },
+        headerShadowVisible: false,
+        header: Header,
+      }}
+    >
       {!user ? (
         <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }} />
       ) : (
-        <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Main" component={MainScreen} />
       )}
     </Stack.Navigator>
   );

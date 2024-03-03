@@ -1,3 +1,8 @@
+interface IFontFamily {
+  'SF-UI-Text-Regular': 'SF-UI-Text-Regular';
+  'Lobster-Regular': 'Lobster-Regular';
+}
+
 export interface ITheme {
   colors: {
     primary: string;
@@ -5,14 +10,13 @@ export interface ITheme {
     background: string;
     onBackground: string;
     onBackgroundVariant: string;
+    onBackgroundVariant2: string;
     outline: string;
     outlineVariant: string;
     error: string;
   };
   font: {
-    families: {
-      [p: string]: string;
-    };
+    families: IFontFamily;
     sizes: {
       headline1: number;
       body1: number;
@@ -32,6 +36,7 @@ export const lightTheme: ITheme = {
     background: '#ffffff',
     onBackground: '#717171',
     onBackgroundVariant: '#BBBBBB',
+    onBackgroundVariant2: '#474747',
     outline: '#ffffff',
     outlineVariant: '#EAEAEA',
     error: 'red',
