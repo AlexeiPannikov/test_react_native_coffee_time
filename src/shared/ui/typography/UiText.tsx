@@ -1,5 +1,5 @@
 import React, { type PropsWithChildren } from 'react';
-import { Text, type TextProps } from 'react-native';
+import { Platform, Text, type TextProps } from 'react-native';
 import { useTheme } from '@shared/theme';
 import { type ITheme } from '@shared/theme/themes.ts';
 import { staticModerateScale } from '@shared/utils';
@@ -27,8 +27,12 @@ export const UiText = ({
         {
           color: colors.onBackground,
           fontFamily: type?.includes('headline1')
-            ? font.families['Lobster']
-            : font.families['SF-UI-Text'],
+            ? Platform.OS === 'android'
+              ? font.families['Lobster-Regular']
+              : font.families['Lobster']
+            : Platform.OS === 'android'
+              ? font.families['SF-UI-Text-Regular']
+              : font.families['SF-UI-Text'],
           fontWeight: '400',
           fontSize:
             type !== undefined ? staticModerateScale(font.sizes[type]) : staticModerateScale(14),

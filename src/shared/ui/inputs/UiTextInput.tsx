@@ -51,7 +51,9 @@ export const UiTextInput = (props: IUiTextInputProps) => {
           style={[
             styles.input,
             {
-              borderColor: 'transparent',
+              borderTopColor: 'transparent',
+              borderRightColor: 'transparent',
+              borderLeftColor: 'transparent',
               borderBottomColor: !props.fieldState?.invalid
                 ? isFocused
                   ? colors.primary

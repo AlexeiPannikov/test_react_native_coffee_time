@@ -1,6 +1,8 @@
 interface IFontFamily {
   'SF-UI-Text': 'SF-UI-Text';
+  'SF-UI-Text-Regular': 'SF-UI-Text-Regular';
   Lobster: 'Lobster';
+  'Lobster-Regular': 'Lobster-Regular';
 }
 
 export interface ITheme {
@@ -45,7 +47,9 @@ export const lightTheme: ITheme = {
   font: {
     families: {
       'SF-UI-Text': 'SF-UI-Text',
+      'SF-UI-Text-Regular': 'SF-UI-Text-Regular',
       Lobster: 'Lobster',
+      'Lobster-Regular': 'Lobster-Regular',
     },
     sizes: {
       headline1: 64,
