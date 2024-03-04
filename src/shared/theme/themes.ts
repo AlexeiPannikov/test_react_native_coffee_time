@@ -22,6 +22,7 @@ export interface ITheme {
     sizes: {
       headline1: number;
       headline2: number;
+      headline3: number;
       body1: number;
       body2: number;
     };
@@ -53,7 +54,8 @@ export const lightTheme: ITheme = {
     },
     sizes: {
       headline1: 64,
-      headline2: 20,
+      headline2: 22,
+      headline3: 20,
       body1: 16,
       body2: 14,
     },

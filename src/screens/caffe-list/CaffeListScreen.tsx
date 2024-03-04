@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, staticVerticalScale, UiText } from '@/shared';
 import PagerView from 'react-native-pager-view';
-import { View, StyleSheet, NativeSyntheticEvent } from 'react-native';
+import { View, StyleSheet, NativeSyntheticEvent, Text } from 'react-native';
 import { PagesSwitcher } from '@screens/caffe-list/PagesSwitcher.tsx';
-import { CafeListWidget } from '@/widgets';
+import { CafeListWidget, CafeMap } from '@/widgets';
 import { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
@@ -30,12 +30,13 @@ export const CaffeListScreen = (props: Props) => {
         ref={pager}
         style={styles.pagerView}
         initialPage={page}
+        scrollEnabled={false}
         onPageSelected={onPageSelected}
       >
         <View key="1">
-          <UiText>Map</UiText>
+          <CafeMap onGoToCafePage={(id) => props.navigation.navigate('Caffe', { id })} />
         </View>
-        <View key="2">
+        <View style={{ marginTop: 65 }} key="2">
           <CafeListWidget {...props} />
         </View>
       </PagerView>
@@ -46,7 +47,10 @@ export const CaffeListScreen = (props: Props) => {
 const styles = StyleSheet.create({
   switcherContainer: {
     paddingVertical: staticVerticalScale(15),
+    position: 'absolute',
     alignItems: 'center',
+    zIndex: 20,
+    width: '100%',
   },
   pagerView: {
     flex: 1,

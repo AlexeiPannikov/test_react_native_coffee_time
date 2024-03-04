@@ -8,6 +8,10 @@ import { store } from '@app/store/store.ts';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from '@/shared';
 import Toast from 'react-native-toast-message';
+import YaMap from 'react-native-yamap';
+import { API_KEY } from '@env';
+
+YaMap.init(API_KEY);
 
 function App(): React.JSX.Element {
   useEffect(() => {

@@ -2,9 +2,10 @@ import React, { type PropsWithChildren, ReactElement } from 'react';
 import { type ViewProps } from 'react-native';
 import { FilledButton } from '@shared/ui/buttons/FilledButton.tsx';
 import { TextButton } from '@shared/ui/buttons/TextButton.tsx';
+import { IconButton } from '@shared/ui/buttons/IconButton.tsx';
 
 export interface IUiButtonProps extends ViewProps {
-  type?: 'filled' | 'text';
+  type?: 'filled' | 'text' | 'icon';
   onPress?: () => unknown;
   disabled?: boolean;
   loading?: boolean;
@@ -40,6 +41,8 @@ export const UiButton = (props: PropsWithChildren<IUiButtonProps>) => {
         return <FilledButton {...p} />;
       case 'text':
         return <TextButton {...p} />;
+      case 'icon':
+        return <IconButton {...p} />;
       default:
         return <FilledButton {...p} />;
     }

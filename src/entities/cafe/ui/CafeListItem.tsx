@@ -32,7 +32,7 @@ export const CafeListItem = ({
       </View>
       <View style={styles.rightBlock}>
         <View style={styles.textWrap}>
-          <UiText type="headline2" style={[styles.title, { color: colors.primary }]}>
+          <UiText type="headline3" style={[styles.title, { color: colors.primary }]}>
             {name}
           </UiText>
           <UiText type="body2" style={{ fontWeight: '300' }}>
