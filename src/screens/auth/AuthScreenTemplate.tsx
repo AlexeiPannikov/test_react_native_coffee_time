@@ -1,28 +1,42 @@
 import React, { PropsWithChildren } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Platform,
+  TextInput,
+  useWindowDimensions,
+} from 'react-native';
 import { BackgroundImage, UiText, useResponsiveSizes } from '@/shared';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export const AuthScreenTemplate = ({ children }: PropsWithChildren) => {
   const { verticalScale } = useResponsiveSizes();
+  const { height, width } = useWindowDimensions();
   return (
     <View style={styles.container}>
       <ImageBackground
         source={BackgroundImage}
         resizeMode="cover"
-        style={styles.image}
+        style={[styles.image, { width, height }]}
         blurRadius={2}
       >
-        <KeyboardAwareScrollView style={{ width: '100%' }}>
+        <KeyboardAwareScrollView
+          style={{ width: '100%' }}
+          enableOnAndroid={true}
+          enableAutomaticScroll={Platform.OS === 'ios'}
+          extraHeight={130}
+          extraScrollHeight={130}
+        >
           <View style={[{ top: verticalScale(100) }, styles.titleWrap]}>
-            <UiText type="headline1" style={styles.title}>
+            <UiText type="headline1" style={[styles.title, { fontFamily: 'Lobster-Regular' }]}>
               CoffeTime
             </UiText>
             <UiText type="body1" style={styles.description}>
               Территория кофе
             </UiText>
           </View>
-          <View style={[styles.content, { top: verticalScale(220) }]}>{children}</View>
+          <View style={[styles.content, { paddingTop: verticalScale(220) }]}>{children}</View>
         </KeyboardAwareScrollView>
       </ImageBackground>
     </View>

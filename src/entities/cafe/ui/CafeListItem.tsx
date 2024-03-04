@@ -75,6 +75,7 @@ export const CafeListItem = ({
 const styles = StyleSheet.create({
   container: {
     minHeight: 126,
+    maxHeight: 200,
     width: '100%',
     flexDirection: 'row',
     paddingRight: 10,

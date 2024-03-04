@@ -24,7 +24,7 @@ export const Header = ({ navigation, progress }: StackHeaderProps) => {
       <UiText
         style={[
           styles.title,
-          { fontFamily: font.families['Lobster'], color: colors.onBackgroundVariant2 },
+          { fontFamily: font.families['Lobster-Regular'], color: colors.onBackgroundVariant2 },
         ]}
       >
         CoffeTime
