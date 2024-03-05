@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { BackgroundImage, UiText, useResponsiveSizes } from '@/shared';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { LinearGradient } from 'react-native-linear-gradient';
 
 export const AuthScreenTemplate = ({ children }: PropsWithChildren) => {
   const { verticalScale } = useResponsiveSizes();
@@ -19,8 +20,11 @@ export const AuthScreenTemplate = ({ children }: PropsWithChildren) => {
         source={BackgroundImage}
         resizeMode="cover"
         style={[styles.image, { width, height }]}
-        blurRadius={2}
       >
+        <LinearGradient
+          colors={['rgba(190,188,219,0)', 'rgba(255,255,255, 0.2)', 'rgba(255,255,255, 0.9)']}
+          style={styles.gradient}
+        ></LinearGradient>
         <KeyboardAwareScrollView
           style={{ width: '100%' }}
           enableOnAndroid={true}
@@ -46,6 +50,12 @@ export const AuthScreenTemplate = ({ children }: PropsWithChildren) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  gradient: {
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
   image: {
     flex: 1,
