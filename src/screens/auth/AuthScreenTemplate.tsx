@@ -1,12 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import {
-  View,
-  StyleSheet,
-  ImageBackground,
-  Platform,
-  TextInput,
-  useWindowDimensions,
-} from 'react-native';
+import { View, StyleSheet, ImageBackground, Platform, useWindowDimensions } from 'react-native';
 import { BackgroundImage, UiText, useResponsiveSizes } from '@/shared';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { LinearGradient } from 'react-native-linear-gradient';
