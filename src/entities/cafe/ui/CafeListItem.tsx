@@ -44,9 +44,9 @@ export const CafeListItem = ({
         </View>
         <View
           style={{
-            flex: 0,
             flexDirection: 'row',
             justifyContent: 'flex-end',
+            paddingTop: 5,
           }}
         >
           <UiButton
@@ -75,7 +75,7 @@ export const CafeListItem = ({
 const styles = StyleSheet.create({
   container: {
     minHeight: 126,
-    maxHeight: 200,
+    maxHeight: 230,
     width: '100%',
     flexDirection: 'row',
     paddingRight: 10,
