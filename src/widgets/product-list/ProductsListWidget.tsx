@@ -1,16 +1,19 @@
 import React from 'react';
 import { useGetProductsCafeQuery } from '@entities/product/api/ProductApi.ts';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { NoData } from '@/shared';
+import { NoData, RootStackParamList } from '@/shared';
 import { ProductListItem, useProduct } from '@/entities';
 import { AddToFavoriteProductButton } from '@/features';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-interface IProps {
+type NavigatePops = NativeStackScreenProps<RootStackParamList, 'Caffe'>;
+
+interface IProps extends NavigatePops {
   cafeId: string;
 }
 
-export const ProductList = ({ cafeId }: IProps) => {
-  const { isLoading, data } = useGetProductsCafeQuery({ cafeId });
+export const ProductListWidget = ({ cafeId, navigation: { navigate } }: IProps) => {
+  const { isLoading } = useGetProductsCafeQuery({ cafeId });
   const { filteredProducts } = useProduct();
 
   return isLoading ? (
@@ -21,6 +24,7 @@ export const ProductList = ({ cafeId }: IProps) => {
         <ProductListItem
           key={product.id}
           product={product}
+          onPress={() => navigate('Product', { id: product.id })}
           bottomRightSlot={<AddToFavoriteProductButton product={product} />}
         />
       ))}

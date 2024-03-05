@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product, productApi } from '@/entities';
+import { CafeProduct, productApi } from '@/entities';
 import { ProductAdapter } from '@entities/product/model/ProductAdapter.ts';
 
 interface ProductState {
-  productList: Product[];
-  filteredList: Product[];
+  productList: CafeProduct[];
+  filteredList: CafeProduct[];
 }
 
 const initialState: ProductState = {
@@ -16,7 +16,7 @@ export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    setFilteredList: (state, action: PayloadAction<Product[]>) => {
+    setFilteredList: (state, action: PayloadAction<CafeProduct[]>) => {
       state.filteredList = [...action.payload];
     },
     addToFavorite: (state, action: PayloadAction<{ productId: string }>) => {
@@ -48,8 +48,8 @@ export const productSlice = createSlice({
     builder.addMatcher(
       productApi.endpoints.getProductsCafe.matchFulfilled,
       (state, { payload }) => {
-        state.productList = ProductAdapter.listToDomain(payload);
-        state.filteredList = ProductAdapter.listToDomain(payload);
+        state.productList = ProductAdapter.listToDomainCafeProduct(payload);
+        state.filteredList = ProductAdapter.listToDomainCafeProduct(payload);
       },
     );
   },

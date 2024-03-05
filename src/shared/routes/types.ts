@@ -4,6 +4,7 @@ export interface RootStackParamList extends ParamListBase {
   Auth: undefined;
   CaffeList: undefined;
   Caffe: { id: string };
+  Product: { id: string };
 }
 
 export interface AuthStackParamList extends ParamListBase {

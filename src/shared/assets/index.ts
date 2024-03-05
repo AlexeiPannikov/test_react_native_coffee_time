@@ -9,3 +9,8 @@ export { default as SearchIcon } from './images/search-icon.svg';
 export { default as TelegramIcon } from './images/telegram-icon.svg';
 export { default as CoffeeMug } from './images/image_no_coffe.png';
 export { default as HeartIcon } from './images/heart-icon.svg';
+export { default as MilkIcon } from './images/icon_milk.png';
+export { default as PressureIcon } from './images/icon_pressure.png';
+export { default as CoffeeIcon } from './images/icon_coffe.png';
+export { default as TemperatureIcon } from './images/icon_temperature.png';
+export { default as WaterIcon } from './images/icon_water.png';

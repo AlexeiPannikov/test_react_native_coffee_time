@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
 import { HeartIcon, UiSwitch } from '@/shared';
-import { Product, useProduct } from '@/entities';
+import { CafeProduct, useProduct } from '@/entities';
 
 interface IProps {}
 
@@ -8,7 +8,7 @@ export const FilterProductsByFavoritesSwitch = ({}: IProps) => {
   let isEnabled = false;
   const { setFilteredProducts, productsList } = useProduct();
 
-  const filter = (products: Product[]) =>
+  const filter = (products: CafeProduct[]) =>
     products.filter((item) => (isEnabled ? item.favorite : true));
 
   const onChange = (value: boolean) => {

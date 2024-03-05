@@ -4,11 +4,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, useTheme } from '@/shared';
 import { CafeImageWithTitle, useLazyGetCafeQuery, useLazyGetProductsCafeQuery } from '@/entities';
 import { FilterProductsByFavoritesSwitch } from '@/features';
-import { ProductList } from '@/widgets';
+import { ProductListWidget } from '@/widgets';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Caffe'>;
 
-export const CaffeScreen = ({ route: { params } }: Props) => {
+export const CaffeScreen = (props: Props) => {
   const [triggerCafe, dataCafe] = useLazyGetCafeQuery();
   const [triggerProduct, dataProduct] = useLazyGetProductsCafeQuery();
   const {
@@ -22,18 +22,18 @@ export const CaffeScreen = ({ route: { params } }: Props) => {
         <RefreshControl
           refreshing={dataCafe.isLoading || dataProduct.isLoading}
           onRefresh={() => {
-            triggerCafe({ cafeId: params.id });
-            triggerProduct({ cafeId: params.id });
+            triggerCafe({ cafeId: props.route.params.id });
+            triggerProduct({ cafeId: props.route.params.id });
           }}
           tintColor={colors.primary}
           colors={[colors.primary]}
         />
       }
     >
-      <CafeImageWithTitle cafeId={params.id}>
+      <CafeImageWithTitle cafeId={props.route.params.id}>
         <FilterProductsByFavoritesSwitch />
       </CafeImageWithTitle>
-      <ProductList cafeId={params.id} />
+      <ProductListWidget {...props} cafeId={props.route.params.id} />
     </ScrollView>
   );
 };

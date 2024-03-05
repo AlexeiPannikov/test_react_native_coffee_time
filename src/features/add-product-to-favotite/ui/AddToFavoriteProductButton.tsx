@@ -1,14 +1,15 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { HeartIcon, staticModerateScale, useTheme } from '@/shared';
-import { Product } from '@/entities';
+import { CafeProduct } from '@/entities';
 import {
   useRemoveFromFavoritesMutation,
   useAddToFavoritesMutation,
 } from '@features/add-product-to-favotite/api/FavoriteApi.ts';
+import { Product } from '@entities/product/model/Product.ts';
 
 interface IProps {
-  product: Product;
+  product: CafeProduct | Product;
 }
 
 export const AddToFavoriteProductButton = ({ product }: IProps) => {

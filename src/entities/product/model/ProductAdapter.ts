@@ -1,12 +1,13 @@
-import { ProductResponse } from '@/shared';
+import { GetProductResponse, GetProductsResponseItem } from '@/shared';
+import { CafeProduct } from '@entities/product/model/CafeProduct.ts';
 import { Product } from '@entities/product/model/Product.ts';
 
 export class ProductAdapter {
-  static listToDomain(dto: ProductResponse[]): Product[] {
+  static listToDomainCafeProduct(dto: GetProductsResponseItem[]): CafeProduct[] {
     return dto.map((item) => item);
   }
 
-  static toDomain(dto: ProductResponse): Product {
-    return { ...dto };
+  static toDomainProduct(dto: GetProductResponse): Product {
+    return { ...dto, favorite: dto.favarite };
   }
 }

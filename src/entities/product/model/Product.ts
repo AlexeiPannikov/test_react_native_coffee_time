@@ -1,3 +1,5 @@
-import { ProductResponse } from '@/shared';
+import { GetProductResponse } from '@/shared';
 
-export interface Product extends ProductResponse {}
+export interface Product extends GetProductResponse {
+  favorite: boolean;
+}

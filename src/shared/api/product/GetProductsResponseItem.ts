@@ -1,4 +1,4 @@
-export interface ProductResponse {
+export interface GetProductsResponseItem {
   id: string;
   cofeId: string;
   name: string;

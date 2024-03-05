@@ -1,21 +1,25 @@
 import React, { ReactElement } from 'react';
-import { Product } from '@entities/product/model/Product.ts';
-import { Image, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { CafeProduct } from '@entities/product/model/CafeProduct.ts';
+import { Image, StyleSheet, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { staticModerateScale, UiText, useTheme } from '@/shared';
 
 interface IProps {
-  product: Product;
+  product: CafeProduct;
   bottomRightSlot?: ReactElement;
+  onPress: () => void;
 }
 
-export const ProductListItem = ({ product, bottomRightSlot }: IProps) => {
+export const ProductListItem = ({ product, bottomRightSlot, onPress }: IProps) => {
   const {
     theme: { colors, font },
   } = useTheme();
   const { width } = useWindowDimensions();
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background, width: width / 2 - 20 }]}>
+    <TouchableOpacity
+      style={[styles.container, { backgroundColor: colors.background, width: width / 2 - 20 }]}
+      onPress={onPress}
+    >
       <UiText
         type="headline5"
         style={[styles.title, { fontFamily: font.families['SF-UI-Text-Bold'], fontWeight: '700' }]}
@@ -39,7 +43,7 @@ export const ProductListItem = ({ product, bottomRightSlot }: IProps) => {
         </View>
         <View>{bottomRightSlot}</View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -10,7 +10,7 @@ const favoriteApi = baseApi.injectEndpoints({
         body: args,
       }),
       onQueryStarted: async (req, { dispatch, queryFulfilled }) => {
-        const patchResult = dispatch(
+        const patchResultGetProductsCafe = dispatch(
           productApi.util.updateQueryData('getProductsCafe', { cafeId: req.cafeId }, (draft) => {
             draft.forEach((item) => {
               if (item.id === req.productId) {
@@ -19,11 +19,19 @@ const favoriteApi = baseApi.injectEndpoints({
             });
           }),
         );
+        const patchResultGetCafe = dispatch(
+          productApi.util.updateQueryData('getProduct', { productId: req.productId }, (draft) => {
+            if (draft.id === req.productId) {
+              draft.favorite = true;
+            }
+          }),
+        );
         dispatch(addToFavorite({ productId: req.productId }));
         try {
           await queryFulfilled;
         } catch {
-          patchResult.undo();
+          patchResultGetProductsCafe.undo();
+          patchResultGetCafe.undo();
           dispatch(removeFromFavorite({ productId: req.productId }));
         }
       },
@@ -35,7 +43,7 @@ const favoriteApi = baseApi.injectEndpoints({
         body: args,
       }),
       onQueryStarted: async (req, { dispatch, queryFulfilled }) => {
-        const patchResult = dispatch(
+        const patchResultGetProductsCafe = dispatch(
           productApi.util.updateQueryData('getProductsCafe', { cafeId: req.cafeId }, (draft) => {
             draft.forEach((item) => {
               if (item.id === req.productId) {
@@ -44,11 +52,19 @@ const favoriteApi = baseApi.injectEndpoints({
             });
           }),
         );
+        const patchResultGetCafe = dispatch(
+          productApi.util.updateQueryData('getProduct', { productId: req.productId }, (draft) => {
+            if (draft.id === req.productId) {
+              draft.favorite = false;
+            }
+          }),
+        );
         dispatch(removeFromFavorite({ productId: req.productId }));
         try {
           await queryFulfilled;
         } catch {
-          patchResult.undo();
+          patchResultGetProductsCafe.undo();
+          patchResultGetCafe.undo();
           dispatch(addToFavorite({ productId: req.productId }));
         }
       },

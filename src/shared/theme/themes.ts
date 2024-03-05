@@ -29,6 +29,7 @@ export interface ITheme {
       headline5: number;
       body1: number;
       body2: number;
+      body3: number;
     };
   };
 }
@@ -66,6 +67,7 @@ export const lightTheme: ITheme = {
       headline5: 16,
       body1: 16,
       body2: 14,
+      body3: 8,
     },
   },
 };
