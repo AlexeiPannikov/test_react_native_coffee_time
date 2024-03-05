@@ -119,7 +119,7 @@ export const CafeMapWidget = (props: Props) => {
           </View>
           {!!routeInfo && (
             <UiText type="body1">
-              {routeInfo?.distance} м = {routeInfo?.time} минут
+              {routeInfo?.distance} м = {routeInfo?.time}
             </UiText>
           )}
         </BottomSheetView>

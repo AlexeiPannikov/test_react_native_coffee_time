@@ -29,7 +29,7 @@ export const useCafeMap = () => {
   const mapRef = useRef<YaMap>(null);
   const [selectedCafe, setCafe] = useState<Cafe | null>(null);
   const [isOpenedBottomSheet, setIsOpenedBottomSheet] = useState<boolean>(false);
-  const [routeInfo, setRouteInfo] = useState<{ distance: number; time: number } | null>(null);
+  const [routeInfo, setRouteInfo] = useState<{ distance: number; time: string } | null>(null);
 
   const animatedOffset = useAnimatedStyle(() => {
     return {
@@ -90,7 +90,7 @@ export const useCafeMap = () => {
           'sections'
         ].map((item) => item.sectionInfo)[0];
         console.log('info', info);
-        setRouteInfo({ time: Number(info.time), distance: info.walkingDistance });
+        setRouteInfo({ time: info.time, distance: info.walkingDistance });
       },
     );
   };
