@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { Cafe, useGetCafeListQuery } from '@/entities';
+import React from 'react';
 import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
-import BottomSheet, { BottomSheetView, useBottomSheet } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import {
+  NoData,
   SearchIcon,
   staticModerateScale,
   TelegramIcon,
@@ -10,85 +10,31 @@ import {
   UiText,
   useTheme,
 } from '@/shared';
-import YaMap, { Marker, Animation, CameraPosition } from 'react-native-yamap';
-import Geolocation from '@react-native-community/geolocation';
-import { useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import YaMap, { Marker } from 'react-native-yamap';
 import Animated from 'react-native-reanimated';
-
-interface IPosition {
-  coords: {
-    latitude: number;
-    longitude: number;
-    altitude: number | null;
-    accuracy: number;
-    altitudeAccuracy: number | null;
-    heading: number | null;
-    speed: number | null;
-  };
-  timestamp: number;
-}
+import { useCafeMap } from '@widgets/cafe-map/model/UseCafeMap.ts';
 
 interface Props {
   onGoToCafePage: (id: string) => void;
 }
 
 export const CafeMap = (props: Props) => {
-  const { data, isLoading } = useGetCafeListQuery(null);
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const map = useRef<YaMap>(null);
-  const [selectedCafe, setCafe] = useState<Cafe | null>(null);
-  const [isOpenedBottomSheet, setIsOpenedBottomSheet] = useState<boolean>(false);
-  const [routeInfo, setRouteInfo] = useState<{ distance: number; time: number } | null>(null);
+  const {
+    data,
+    mapRef,
+    bottomSheetRef,
+    selectedCafe,
+    isLoading,
+    isOpenedBottomSheet,
+    routeInfo,
+    pickCafe,
+    animatedOffset,
+    goToMyPosition,
+    onChangeBottomSheet,
+  } = useCafeMap();
   const {
     theme: { colors, font },
   } = useTheme();
-
-  const animatedOffset = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: withSpring(isOpenedBottomSheet ? -75 : 0) }],
-    };
-  });
-
-  const getCamera = (): Promise<CameraPosition> => {
-    return new Promise((resolve, reject) => {
-      if (map.current) {
-        map.current.getCameraPosition((position) => {
-          resolve(position);
-        });
-      } else {
-        reject('ERROR');
-      }
-    });
-  };
-
-  const getMyPosition = (): Promise<IPosition> => {
-    return new Promise((resolve, reject) => {
-      Geolocation.getCurrentPosition(
-        (info: IPosition) => resolve(info),
-        (e: any) => {
-          reject(e);
-        },
-        {},
-      );
-    });
-  };
-
-  const goToMyPosition = async () => {
-    try {
-      const myPosition = await getMyPosition();
-      const camera = await getCamera();
-      map.current?.setCenter(
-        { lon: myPosition.coords.longitude, lat: myPosition.coords.latitude },
-        12,
-        0,
-        0,
-        1,
-        Animation.LINEAR,
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   const goToCafeScreen = () => {
     if (selectedCafe) {
@@ -96,38 +42,13 @@ export const CafeMap = (props: Props) => {
     }
   };
 
-  const findRoute = async ({ lon, lat }: { lon: number; lat: number }) => {
-    const myPosition = await getMyPosition();
-    map.current?.findPedestrianRoutes(
-      [
-        { lon: myPosition.coords.longitude, lat: myPosition.coords.latitude },
-        { lat, lon },
-      ],
-      (event) => {
-        const info = event['routes'][0]['sections'].map((item) => item.sectionInfo)[0];
-        console.log(info);
-        setRouteInfo({ time: info.time, distance: info.walkingDistance });
-      },
-    );
-  };
-
-  const pickCafe = async (cafe: Cafe) => {
-    setCafe(cafe);
-    await findRoute(cafe);
-    bottomSheetRef.current?.expand();
-  };
-
-  const onChangeBottomSheet = (index: number) => {
-    setIsOpenedBottomSheet(!!index);
-  };
-
-  return isLoading || !data ? (
+  return isLoading ? (
     <ActivityIndicator />
-  ) : (
+  ) : data?.length ? (
     <>
       <View style={{ flex: 1 }}>
         <YaMap
-          ref={map}
+          ref={mapRef}
           showUserPosition={true}
           initialRegion={{
             lat: 46.83741607518258,
@@ -142,7 +63,9 @@ export const CafeMap = (props: Props) => {
               point={{ lat: cafe.lat, lon: cafe.lon }}
               zIndex={6}
               scale={2}
-              onPress={() => pickCafe(cafe)}
+              onPress={() => {
+                pickCafe(cafe);
+              }}
             >
               <View style={styles.cafePointBig}>
                 <View style={styles.cafePointMedium}>
@@ -202,6 +125,8 @@ export const CafeMap = (props: Props) => {
         </BottomSheetView>
       </BottomSheet>
     </>
+  ) : (
+    <NoData style={{ marginTop: 65 }}>По вашему запросу ничего не найдено</NoData>
   );
 };
 

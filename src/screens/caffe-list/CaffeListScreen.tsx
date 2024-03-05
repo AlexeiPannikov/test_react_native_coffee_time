@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList, staticVerticalScale, UiText } from '@/shared';
+import { RootStackParamList, staticVerticalScale } from '@/shared';
 import PagerView from 'react-native-pager-view';
-import { View, StyleSheet, NativeSyntheticEvent, Text } from 'react-native';
+import { View, StyleSheet, NativeSyntheticEvent } from 'react-native';
 import { PagesSwitcher } from '@screens/caffe-list/PagesSwitcher.tsx';
 import { CafeListWidget, CafeMap } from '@/widgets';
-import { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
 
