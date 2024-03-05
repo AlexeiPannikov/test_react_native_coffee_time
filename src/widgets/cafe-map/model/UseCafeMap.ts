@@ -1,7 +1,12 @@
 import { Cafe, useGetCafeListQuery } from '@/entities';
 import { useRef, useState } from 'react';
 import BottomSheet from '@gorhom/bottom-sheet';
-import YaMap, { Animation, CameraPosition } from 'react-native-yamap';
+import YaMap, {
+  Animation,
+  CameraPosition,
+  MasstransitInfo,
+  RoutesFoundEvent,
+} from 'react-native-yamap';
 import { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -80,10 +85,12 @@ export const useCafeMap = () => {
         { lon: myPosition.coords.longitude, lat: myPosition.coords.latitude },
         { lat, lon },
       ],
-      (event) => {
-        const info = event['routes'][0]['sections'].map((item) => item.sectionInfo)[0];
+      (event: unknown) => {
+        const info = (event as RoutesFoundEvent<MasstransitInfo>['nativeEvent'])['routes'][0][
+          'sections'
+        ].map((item) => item.sectionInfo)[0];
         console.log('info', info);
-        setRouteInfo({ time: info.time, distance: info.walkingDistance });
+        setRouteInfo({ time: Number(info.time), distance: info.walkingDistance });
       },
     );
   };
