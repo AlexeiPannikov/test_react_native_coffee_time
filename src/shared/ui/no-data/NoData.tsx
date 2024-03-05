@@ -4,7 +4,7 @@ import { CoffeeMug, UiText, useTheme } from '@/shared';
 
 export const NoData = ({ children, style }: PropsWithChildren<ViewProps>) => {
   const {
-    theme: { colors },
+    theme: { colors, font },
   } = useTheme();
 
   return (
@@ -12,7 +12,16 @@ export const NoData = ({ children, style }: PropsWithChildren<ViewProps>) => {
       <View style={{ marginVertical: 80 }}>
         <Image source={CoffeeMug} />
       </View>
-      <UiText type="body1">{children}</UiText>
+      <UiText
+        type="body1"
+        style={{
+          fontFamily: font.families['SF-UI-Text-Light'],
+          fontWeight: '300',
+          textAlign: 'center',
+        }}
+      >
+        {children}
+      </UiText>
     </View>
   );
 };

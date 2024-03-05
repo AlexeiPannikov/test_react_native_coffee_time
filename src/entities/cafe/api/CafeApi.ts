@@ -1,6 +1,7 @@
-import { baseApi, GetCafeListResponseItem } from '@/shared';
+import { baseApi, GetCafeResponse } from '@/shared';
 import { Cafe } from '@entities/cafe/model/Cafe.ts';
 import { CafeAdapter } from '@entities/cafe/model/CafeAdapter.ts';
+import { GetCafeRequest } from '@shared/api/cafe/GetCafeRequest.ts';
 
 const cafeApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -10,13 +11,24 @@ const cafeApi = baseApi.injectEndpoints({
         url: 'Cafe/GetAll',
       }),
       providesTags: ['CafeList'],
-      transformResponse: (res: GetCafeListResponseItem[]) => {
+      transformResponse: (res: GetCafeResponse[]) => {
         return CafeAdapter.listToDomain(res);
+      },
+    }),
+    getCafe: build.query<Cafe, GetCafeRequest>({
+      query: (args) => ({
+        method: 'POST',
+        url: 'Cafe/GetCafe',
+        body: args,
+      }),
+      providesTags: ['Cafe'],
+      transformResponse: (res: GetCafeResponse) => {
+        return CafeAdapter.toDomain(res);
       },
     }),
   }),
 });
 
-const { useGetCafeListQuery } = cafeApi;
+const { useGetCafeListQuery, useGetCafeQuery, useLazyGetCafeQuery } = cafeApi;
 
-export { useGetCafeListQuery };
+export { useGetCafeListQuery, useGetCafeQuery, useLazyGetCafeQuery };

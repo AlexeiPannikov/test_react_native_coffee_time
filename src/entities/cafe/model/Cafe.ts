@@ -1,6 +1,6 @@
-import { GetCafeListResponseItem } from '@/shared';
+import { GetCafeResponse } from '@/shared';
 
-export interface Cafe extends GetCafeListResponseItem {
+export interface Cafe extends GetCafeResponse {
   lat: number;
   lon: number;
 }

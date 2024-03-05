@@ -1,1 +1,1 @@
-export * from './GetCafeListResponseItem.ts';
+export * from './GetCafeResponse.ts';

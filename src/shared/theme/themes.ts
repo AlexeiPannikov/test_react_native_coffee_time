@@ -1,6 +1,8 @@
 interface IFontFamily {
   'SF-UI-Text': 'SF-UI-Text';
+  'SF-UI-Text-Bold': 'SF-UI-Text-Bold';
   'SF-UI-Text-Regular': 'SF-UI-Text-Regular';
+  'SF-UI-Text-Light': 'SF-UI-Text-Light';
   Lobster: 'Lobster';
   'Lobster-Regular': 'Lobster-Regular';
 }
@@ -23,6 +25,8 @@ export interface ITheme {
       headline1: number;
       headline2: number;
       headline3: number;
+      headline4: number;
+      headline5: number;
       body1: number;
       body2: number;
     };
@@ -48,14 +52,18 @@ export const lightTheme: ITheme = {
   font: {
     families: {
       'SF-UI-Text': 'SF-UI-Text',
+      'SF-UI-Text-Bold': 'SF-UI-Text-Bold',
       'SF-UI-Text-Regular': 'SF-UI-Text-Regular',
+      'SF-UI-Text-Light': 'SF-UI-Text-Light',
       Lobster: 'Lobster',
       'Lobster-Regular': 'Lobster-Regular',
     },
     sizes: {
       headline1: 64,
-      headline2: 22,
-      headline3: 20,
+      headline2: 28,
+      headline3: 22,
+      headline4: 20,
+      headline5: 16,
       body1: 16,
       body2: 14,
     },

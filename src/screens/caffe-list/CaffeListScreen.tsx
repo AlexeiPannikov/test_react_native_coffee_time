@@ -4,7 +4,7 @@ import { RootStackParamList, staticVerticalScale } from '@/shared';
 import PagerView from 'react-native-pager-view';
 import { View, StyleSheet, NativeSyntheticEvent } from 'react-native';
 import { PagesSwitcher } from '@screens/caffe-list/PagesSwitcher.tsx';
-import { CafeListWidget, CafeMap } from '@/widgets';
+import { CafeListWidget, CafeMapWidget } from '@/widgets';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
 
@@ -33,7 +33,7 @@ export const CaffeListScreen = (props: Props) => {
         onPageSelected={onPageSelected}
       >
         <View key="1">
-          <CafeMap onGoToCafePage={(id) => props.navigation.navigate('Caffe', { id })} />
+          <CafeMapWidget onGoToCafePage={(id) => props.navigation.navigate('Caffe', { id })} />
         </View>
         <View style={{ marginTop: 65 }} key="2">
           <CafeListWidget {...props} />

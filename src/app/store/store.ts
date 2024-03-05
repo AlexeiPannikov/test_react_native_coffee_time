@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { baseApi, rtkQueryErrorLogger } from '@/shared';
-import { userSlice } from '@/entities';
+import { productSlice, userSlice } from '@/entities';
 const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
   user: userSlice.reducer,
+  product: productSlice.reducer,
 });
 
 export const store = configureStore({

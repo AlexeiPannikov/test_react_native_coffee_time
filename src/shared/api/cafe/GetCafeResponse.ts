@@ -1,4 +1,4 @@
-export interface GetCafeListResponseItem {
+export interface GetCafeResponse {
   id: string;
   name: string;
   address: string;

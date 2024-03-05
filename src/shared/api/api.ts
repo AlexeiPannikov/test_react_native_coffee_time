@@ -3,6 +3,6 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 
 export const baseApi = createApi({
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['User', 'CafeList'],
+  tagTypes: ['User', 'CafeList', 'Cafe', 'ProductList', 'Product'],
   endpoints: () => ({}),
 });

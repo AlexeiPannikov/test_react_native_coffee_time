@@ -18,7 +18,7 @@ interface Props {
   onGoToCafePage: (id: string) => void;
 }
 
-export const CafeMap = (props: Props) => {
+export const CafeMapWidget = (props: Props) => {
   const {
     data,
     mapRef,
@@ -108,7 +108,7 @@ export const CafeMap = (props: Props) => {
             }}
           >
             <UiText
-              type="headline2"
+              type="headline3"
               style={{
                 color: colors.onBackgroundVariant2,
                 fontFamily: font.families['Lobster-Regular'],

@@ -21,9 +21,11 @@ export const baseQueryWithReauth: BaseQueryFn<
   const credentials = await SecureStorage.getCredentials();
   if (!api.endpoint.includes('authorization') && !api.endpoint.includes('registration')) {
     if (typeof args === 'object' && 'body' in args) {
-      args.body['sessionId'] = `"${credentials?.sessionUuid}"`;
+      console.log(api.endpoint);
+      args.body = JSON.stringify({ ...args.body, sessionId: `${credentials?.sessionUuid}` });
+      console.log(args.body);
     }
-    if (typeof args === 'object') {
+    if (typeof args === 'object' && !('body' in args)) {
       args.body = JSON.stringify(JSON.parse(`"${credentials?.sessionUuid}"`));
     }
   }
