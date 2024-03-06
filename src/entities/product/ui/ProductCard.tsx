@@ -54,7 +54,7 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
         <View style={{ flex: 1 }}>
           <View style={styles.titleWrap}>
             <UiText type="headline2" style={{ fontFamily: font.families['Lobster-Regular'] }}>
-              {data?.cofeName}
+              {data?.productName}
             </UiText>
             {!!titleSlot && <View style={{ marginLeft: 10 }}>{titleSlot}</View>}
           </View>
