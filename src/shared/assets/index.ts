@@ -14,3 +14,4 @@ export { default as PressureIcon } from './images/icon_pressure.png';
 export { default as CoffeeIcon } from './images/icon_coffe.png';
 export { default as TemperatureIcon } from './images/icon_temperature.png';
 export { default as WaterIcon } from './images/icon_water.png';
+export { default as HitIcon } from './images/hit.png';

@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, useWindowDimensions, ScrollView } from 'react-
 import { useGetProductQuery } from '@/entities';
 import {
   CoffeeIcon,
+  HitIcon,
   MilkIcon,
   PressureIcon,
   staticModerateScale,
@@ -35,6 +36,7 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
 
   return (
     <View style={styles.container}>
+      <Image style={styles.hitIcon} source={HitIcon} />
       <ScrollView>
         <View style={[styles.imageWrap, { height: height / 2.5 }]}>
           <Image style={styles.image} source={{ uri: data?.imagesPath }} />
@@ -86,6 +88,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginVertical: 30,
+  },
+  hitIcon: {
+    position: 'absolute',
+    left: 0,
+    zIndex: 1,
   },
   image: {
     flex: 1,
