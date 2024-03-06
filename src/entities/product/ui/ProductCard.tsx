@@ -1,10 +1,18 @@
 import React, { ReactElement } from 'react';
-import { View, StyleSheet, Image, useWindowDimensions, ScrollView } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  useWindowDimensions,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { useGetProductQuery } from '@/entities';
 import {
   CoffeeIcon,
   HitIcon,
   MilkIcon,
+  NoData,
   PressureIcon,
   staticModerateScale,
   TemperatureIcon,
@@ -28,13 +36,15 @@ const icons = {
 };
 
 export const ProductCard = ({ productId, titleSlot }: IProps) => {
-  const { data } = useGetProductQuery({ productId });
+  const { data, isLoading } = useGetProductQuery({ productId });
   const { height, width } = useWindowDimensions();
   const {
     theme: { font, colors },
   } = useTheme();
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : data ? (
     <View style={styles.container}>
       <Image style={styles.hitIcon} source={HitIcon} />
       <ScrollView>
@@ -83,6 +93,8 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
         </View>
       </View>
     </View>
+  ) : (
+    <NoData></NoData>
   );
 };
 

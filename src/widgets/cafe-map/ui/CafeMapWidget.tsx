@@ -2,6 +2,8 @@ import React from 'react';
 import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import {
+  LocationIcon,
+  MyLocationIcon,
   NoData,
   SearchIcon,
   staticModerateScale,
@@ -49,6 +51,8 @@ export const CafeMapWidget = (props: Props) => {
       <View style={{ flex: 1 }}>
         <YaMap
           ref={mapRef}
+          userLocationIcon={MyLocationIcon}
+          userLocationIconScale={0.1}
           showUserPosition={true}
           initialRegion={{
             lat: 46.83741607518258,

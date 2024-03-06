@@ -16,7 +16,7 @@ export const AuthScreenTemplate = ({ children }: PropsWithChildren) => {
       >
         <LinearGradient
           colors={['rgba(190,188,219,0)', 'rgba(255,255,255, 0.2)', 'rgba(255,255,255, 0.9)']}
-          style={styles.gradient}
+          style={[styles.gradient, { height, width }]}
         ></LinearGradient>
         <KeyboardAwareScrollView
           style={{ width: '100%' }}

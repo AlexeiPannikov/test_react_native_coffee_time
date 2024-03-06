@@ -88,9 +88,11 @@ export const useCafeMap = () => {
         { lat, lon },
       ],
       (event: unknown) => {
-        const info = (event as RoutesFoundEvent<MasstransitInfo>['nativeEvent'])['routes'][0][
-          'sections'
-        ].map((item) => item.sectionInfo)[0];
+        const routes = (event as RoutesFoundEvent<MasstransitInfo>['nativeEvent'])['routes'];
+        if (!routes.length) {
+          return;
+        }
+        const info = routes[0]['sections'].map((item) => item.sectionInfo)[0];
         console.log('info', info);
         setRouteInfo({ time: info.time, distance: info.walkingDistance });
       },
