@@ -55,11 +55,11 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
           <View style={styles.titleWrap}>
             <UiText
               type="headline2"
-              style={{ fontFamily: font.families['Lobster-Regular'], flex: 1 }}
+              style={{ fontFamily: font.families['Lobster-Regular'], flex: 0 }}
             >
               {data?.productName}
             </UiText>
-            {!!titleSlot && <View style={{ marginLeft: 10 }}>{titleSlot}</View>}
+            {!!titleSlot && <View style={{ marginLeft: 10, flex: 1 }}>{titleSlot}</View>}
           </View>
           {!!data?.attribute.length && (
             <View style={styles.informIconsWrap}>
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   titleWrap: {
+    flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
   },
