@@ -1,5 +1,5 @@
 import { baseApi, ChangeFavoriteStatusRequest } from '@/shared';
-import { addToFavorite, productApi, removeFromFavorite, setFilteredList } from '@/entities';
+import { addToFavorite, productApi, removeFromFavorite } from '@/entities';
 
 const favoriteApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

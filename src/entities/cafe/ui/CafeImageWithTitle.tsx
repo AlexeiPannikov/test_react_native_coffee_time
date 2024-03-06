@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { ImageBackground, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import { useGetCafeQuery } from '@/entities';
 import { LinearGradient } from 'react-native-linear-gradient';
 import { UiText, useTheme } from '@/shared';

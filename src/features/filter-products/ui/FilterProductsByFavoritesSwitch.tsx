@@ -1,10 +1,8 @@
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
+import React from 'react';
 import { HeartIcon, UiSwitch } from '@/shared';
 import { CafeProduct, useProduct } from '@/entities';
 
-interface IProps {}
-
-export const FilterProductsByFavoritesSwitch = ({}: IProps) => {
+export const FilterProductsByFavoritesSwitch = () => {
   let isEnabled = false;
   const { setFilteredProducts, productsList } = useProduct();
 

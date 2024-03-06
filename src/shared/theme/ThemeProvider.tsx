@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { type ThemeName, themes } from '@shared/theme/themes.ts';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar } from 'react-native';
 
 interface IThemeContext {
   theme: ThemeName;
@@ -28,7 +28,6 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const isDarkMode = useColorScheme() === 'dark';
   const [theme, setTheme] = useState<ThemeName>('light');
 
   const changeTheme = useCallback(setTheme, [setTheme]);

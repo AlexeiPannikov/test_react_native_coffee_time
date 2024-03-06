@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/shared';
-import { CafeProduct, setFilteredList, useGetProductsCafeQuery } from '@/entities';
+import { CafeProduct, setFilteredList } from '@/entities';
 
 export const useProduct = () => {
   const productsList = useAppSelector((state) => state.product.productList);

@@ -11,7 +11,6 @@ import {
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { trigger } from 'react-native-haptic-feedback';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
 
