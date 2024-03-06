@@ -42,13 +42,7 @@ export const CafeListItem = ({
             {address}
           </UiText>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            paddingTop: 5,
-          }}
-        >
+        <View style={styles.buttonNextWrap}>
           <UiButton
             type="text"
             color={colors.onBackgroundVariant}
@@ -74,8 +68,6 @@ export const CafeListItem = ({
 
 const styles = StyleSheet.create({
   container: {
-    minHeight: 126,
-    maxHeight: 300,
     width: '100%',
     flexDirection: 'row',
     paddingRight: 10,
@@ -107,5 +99,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 100,
     aspectRatio: 1,
+  },
+  buttonNextWrap: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingTop: 5,
   },
 });
