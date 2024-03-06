@@ -68,7 +68,14 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
         </View>
       </ScrollView>
       <View
-        style={[styles.bottomPanel, { borderTopColor: colors.outlineVariant, width: width - 40 }]}
+        style={[
+          styles.bottomPanel,
+          {
+            borderTopColor: colors.outlineVariant,
+            backgroundColor: colors.background,
+            width: width - 40,
+          },
+        ]}
       >
         <UiText type="headline2">{data?.price} ₽</UiText>
         <View>
