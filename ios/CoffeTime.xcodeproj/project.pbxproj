@@ -21,6 +21,7 @@
 		2AE42BE1ABED4661BE818A4B /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4D568A1093A4229BEE70568 /* SF-UI-Text-Light.otf */; };
 		2BE8F80D184B461991063B25 /* SF-Compact-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2F8A9B9488C4E62B96518EB /* SF-Compact-Display-Light.otf */; };
 		2CD886D0A84148DABD3513CA /* SF-UI-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BA39D4DC7D774DE9AB403CA5 /* SF-UI-Text-SemiboldItalic.otf */; };
+		2E52BB932B98490B00297EBB /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E52BB922B98490B00297EBB /* libRNReactNativeHapticFeedback.a */; };
 		2E74E56C441140D1AF8EFA12 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37EC92AA329745CF980E305C /* SF-UI-Text-Regular.otf */; };
 		2F24D6EAF0D44E0B815536E9 /* SF-Compact-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77BDB457DDD34243BEBA80F7 /* SF-Compact-Text-BoldItalic.otf */; };
 		314F8E699BB0414F873F5B09 /* SF-UI-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 64540F37624A4D5A803BCBF4 /* SF-UI-Display-Ultralight.otf */; };
@@ -89,6 +90,8 @@
 		2732B61518EC4808B7374A13 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Semibold.otf"; path = "../src/shared/assets/fonts/SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2C3602ED24314642B38E0EEC /* SF-Compact-Text-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Compact-Text-Heavy.otf"; path = "../src/shared/assets/fonts/SF-Compact-Text-Heavy.otf"; sourceTree = "<group>"; };
 		2D7755AD18A242EBB5EE5B3D /* SF-Compact-Text-HeavyItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Compact-Text-HeavyItalic.otf"; path = "../src/shared/assets/fonts/SF-Compact-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		2E52BB8F2B98488700297EBB /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
+		2E52BB922B98490B00297EBB /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FB4917D3AF480FA7F48B05 /* SF-UI-Text-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Heavy.otf"; path = "../src/shared/assets/fonts/SF-UI-Text-Heavy.otf"; sourceTree = "<group>"; };
 		37EC92AA329745CF980E305C /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Regular.otf"; path = "../src/shared/assets/fonts/SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		3C4996E4CEAB44C6BFEF5A02 /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Display-Semibold.otf"; path = "../src/shared/assets/fonts/SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E52BB932B98490B00297EBB /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				C49AB227E89FEED839B953E1 /* libPods-CoffeTime.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +239,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E52BB922B98490B00297EBB /* libRNReactNativeHapticFeedback.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				712B4909A950C5FDBFF5C2C3 /* libPods-CoffeTime.a */,
 				0132F6B4AF25A99935FA96E2 /* libPods-CoffeTime-CoffeTimeTests.a */,
@@ -242,9 +247,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E52BB902B98488700297EBB /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2E52BB8F2B98488700297EBB /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -358,6 +369,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2E52BB902B98488700297EBB /* Products */;
+					ProjectRef = 2E52BB8F2B98488700297EBB /* RNReactNativeHapticFeedback.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* CoffeTime */,
@@ -762,10 +779,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -833,10 +847,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

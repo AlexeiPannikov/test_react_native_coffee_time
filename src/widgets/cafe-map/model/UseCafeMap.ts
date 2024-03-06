@@ -9,6 +9,7 @@ import YaMap, {
 } from 'react-native-yamap';
 import { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import Geolocation from '@react-native-community/geolocation';
+import { useHaptic } from '@/shared';
 
 interface IPosition {
   coords: {
@@ -30,6 +31,7 @@ export const useCafeMap = () => {
   const [selectedCafe, setCafe] = useState<Cafe | null>(null);
   const [isOpenedBottomSheet, setIsOpenedBottomSheet] = useState<boolean>(false);
   const [routeInfo, setRouteInfo] = useState<{ distance: number; time: string } | null>(null);
+  const { selectionTrigger } = useHaptic();
 
   const animatedOffset = useAnimatedStyle(() => {
     return {
@@ -98,6 +100,7 @@ export const useCafeMap = () => {
   const pickCafe = async (cafe: Cafe) => {
     setCafe(cafe);
     setRouteInfo(null);
+    selectionTrigger();
     await findRoute(cafe);
     bottomSheetRef.current?.expand();
   };

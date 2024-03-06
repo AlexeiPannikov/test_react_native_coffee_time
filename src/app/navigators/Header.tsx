@@ -1,12 +1,20 @@
 import { StackHeaderProps } from '@react-navigation/stack';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
-import { IconBack, staticModerateScale, staticVerticalScale, UiText, useTheme } from '@/shared';
+import {
+  IconBack,
+  staticModerateScale,
+  staticVerticalScale,
+  UiText,
+  useHaptic,
+  useTheme,
+} from '@/shared';
 import React from 'react';
 
 export const Header = ({ navigation, progress }: StackHeaderProps) => {
   const {
     theme: { font, colors },
   } = useTheme();
+  const { selectionTrigger } = useHaptic();
 
   return (
     <View style={styles.container}>
@@ -15,6 +23,7 @@ export const Header = ({ navigation, progress }: StackHeaderProps) => {
           hitSlop={20}
           style={styles.iconBack}
           onPress={() => {
+            selectionTrigger();
             navigation.goBack();
           }}
         >

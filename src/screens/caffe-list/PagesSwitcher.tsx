@@ -1,6 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { ListIcon, LocationIcon, useTheme } from '@/shared';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ListIcon, LocationIcon, useHaptic, useTheme } from '@/shared';
 
 type Value = 0 | 1;
 
@@ -13,6 +13,7 @@ export const PagesSwitcher = ({ value, onPress }: IProps) => {
   const {
     theme: { colors },
   } = useTheme();
+  const { selectionTrigger } = useHaptic();
 
   const onClick = (num: Value) => {
     onPress(num);
@@ -25,7 +26,10 @@ export const PagesSwitcher = ({ value, onPress }: IProps) => {
           styles.iconContainer,
           { backgroundColor: value === 0 ? colors.primary : 'transparent' },
         ]}
-        onPress={() => onClick(0)}
+        onPress={() => {
+          selectionTrigger();
+          onClick(0);
+        }}
       >
         <LocationIcon width={20} height={20} />
       </TouchableOpacity>
@@ -34,7 +38,10 @@ export const PagesSwitcher = ({ value, onPress }: IProps) => {
           styles.iconContainer,
           { backgroundColor: value === 1 ? colors.primary : 'transparent' },
         ]}
-        onPress={() => onClick(1)}
+        onPress={() => {
+          selectionTrigger();
+          onClick(1);
+        }}
       >
         <ListIcon width={20} height={20} />
       </TouchableOpacity>

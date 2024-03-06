@@ -3,6 +3,7 @@ import { type ViewProps } from 'react-native';
 import { FilledButton } from '@shared/ui/buttons/FilledButton.tsx';
 import { TextButton } from '@shared/ui/buttons/TextButton.tsx';
 import { IconButton } from '@shared/ui/buttons/IconButton.tsx';
+import { useHaptic } from '@/shared';
 
 export interface IUiButtonProps extends ViewProps {
   type?: 'filled' | 'text' | 'icon';
@@ -26,10 +27,13 @@ interface IButtonCommonProps extends ViewProps {
 export interface IButtonCommonPropsWithChildren extends PropsWithChildren<IButtonCommonProps> {}
 
 export const UiButton = (props: PropsWithChildren<IUiButtonProps>) => {
+  const { selectionTrigger } = useHaptic();
+
   const onPress = () => {
     if (props.disabled) {
       return;
     }
+    selectionTrigger();
     props.onPress?.();
   };
 

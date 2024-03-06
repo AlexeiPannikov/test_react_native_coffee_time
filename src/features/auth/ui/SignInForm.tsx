@@ -1,5 +1,5 @@
 import React from 'react';
-import { createForm, UiButton, UiTextInput, useAppForm, validateEmail } from '@/shared';
+import { createForm, UiButton, UiTextInput, useAppForm, useHaptic, validateEmail } from '@/shared';
 import { useAuth } from '@/features';
 
 type Fields = {
@@ -12,9 +12,14 @@ const Form = createForm<Fields>();
 export const SignInForm = () => {
   const form = useAppForm<Fields>();
   const { authorization, authRezult } = useAuth();
+  const { errorTrigger } = useHaptic();
 
   const signIn = (data: Fields) => {
     authorization(data);
+  };
+
+  const errorHandler = () => {
+    errorTrigger();
   };
 
   return (
@@ -54,7 +59,7 @@ export const SignInForm = () => {
       />
       <UiButton
         style={{ borderRadius: 30, marginTop: 30 }}
-        onPress={form.handleSubmit(signIn)}
+        onPress={form.handleSubmit(signIn, errorHandler)}
         disabled={!!Object.entries(form.formState.errors).length}
         loading={authRezult.isLoading}
       >

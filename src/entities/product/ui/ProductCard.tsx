@@ -44,9 +44,9 @@ export const ProductCard = ({ productId, titleSlot }: IProps) => {
             <UiText type="headline2" style={{ fontFamily: font.families['Lobster-Regular'] }}>
               {data?.cofeName}
             </UiText>
-            {titleSlot && <View style={{ marginLeft: 10 }}>{titleSlot}</View>}
+            {!!titleSlot && <View style={{ marginLeft: 10 }}>{titleSlot}</View>}
           </View>
-          {data?.attribute.length && (
+          {!!data?.attribute.length && (
             <View style={styles.informIconsWrap}>
               {data?.attribute.map((attribute) => (
                 <View key={attribute.id} style={styles.icon}>

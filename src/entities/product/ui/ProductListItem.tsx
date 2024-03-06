@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { CafeProduct } from '@entities/product/model/CafeProduct.ts';
 import { Image, StyleSheet, TouchableOpacity, useWindowDimensions, View } from 'react-native';
-import { staticModerateScale, UiText, useTheme } from '@/shared';
+import { staticModerateScale, UiText, useHaptic, useTheme } from '@/shared';
 
 interface IProps {
   product: CafeProduct;
@@ -14,11 +14,15 @@ export const ProductListItem = ({ product, bottomRightSlot, onPress }: IProps) =
     theme: { colors, font },
   } = useTheme();
   const { width } = useWindowDimensions();
+  const { selectionTrigger } = useHaptic();
 
   return (
     <TouchableOpacity
       style={[styles.container, { backgroundColor: colors.background, width: width / 2 - 20 }]}
-      onPress={onPress}
+      onPress={() => {
+        selectionTrigger();
+        onPress();
+      }}
     >
       <UiText
         type="headline5"

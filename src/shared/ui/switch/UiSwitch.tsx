@@ -8,7 +8,7 @@ import Animated, {
   withTiming,
   useDerivedValue,
 } from 'react-native-reanimated';
-import { useTheme } from '@/shared';
+import { useHaptic, useTheme } from '@/shared';
 
 interface IProps {
   onChange: (value: boolean) => void;
@@ -23,6 +23,7 @@ export const UiSwitch = ({ children, onChange }: PropsWithChildren<IProps>) => {
   const {
     theme: { colors },
   } = useTheme();
+  const { selectionTrigger } = useHaptic();
 
   useEffect(() => {
     if (active) {
@@ -31,6 +32,7 @@ export const UiSwitch = ({ children, onChange }: PropsWithChildren<IProps>) => {
       switchTranslate.value = 4;
     }
     onChange(active);
+    selectionTrigger();
   }, [active, switchTranslate]);
 
   const springStyles = useAnimatedStyle(() => {

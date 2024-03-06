@@ -5,11 +5,13 @@ import {
   staticModerateScale,
   UiButton,
   UiText,
+  useHaptic,
   useTheme,
 } from '@/shared';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { trigger } from 'react-native-haptic-feedback';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
 
@@ -24,6 +26,12 @@ export const CafeListItem = ({
   const {
     theme: { colors },
   } = useTheme();
+  const { selectionTrigger } = useHaptic();
+
+  const goToCafePage = () => {
+    selectionTrigger();
+    navigate({ name: 'Caffe', params: { id } });
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -56,7 +64,7 @@ export const CafeListItem = ({
                 style={{ marginLeft: 10, marginTop: 2 }}
               />
             }
-            onPress={() => navigate({ name: 'Caffe', params: { id } })}
+            onPress={goToCafePage}
           >
             подробнее
           </UiButton>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { HeartIcon, staticModerateScale, useTheme } from '@/shared';
+import { HeartIcon, staticModerateScale, useHaptic, useTheme } from '@/shared';
 import { CafeProduct } from '@/entities';
 import {
   useRemoveFromFavoritesMutation,
@@ -18,8 +18,10 @@ export const AddToFavoriteProductButton = ({ product }: IProps) => {
   } = useTheme();
   const [add] = useAddToFavoritesMutation();
   const [remove] = useRemoveFromFavoritesMutation();
+  const { selectionTrigger } = useHaptic();
 
   const addToFavorite = () => {
+    selectionTrigger();
     if (product.favorite) {
       remove({ cafeId: product.cofeId, productId: product.id });
     } else {
