@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { hexToRgbA, staticModerateScale, UiButton, UiText, useTheme } from '@/shared';
+import { staticModerateScale, useTheme } from '@/shared';
 import { LogOutButton } from '@/features';
 
 export const CustomDriverContent = ({ state, navigation }: DrawerContentComponentProps) => {
