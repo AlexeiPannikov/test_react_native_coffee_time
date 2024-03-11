@@ -33,9 +33,30 @@ const productApi = baseApi.injectEndpoints({
         return ProductAdapter.toDomainProduct(res);
       },
     }),
+    getFavoriteProductsList: build.query<CafeProduct[], null>({
+      query: () => ({
+        method: 'POST',
+        url: 'Product/GetAll',
+      }),
+      providesTags: ['FavoriteList'],
+      transformResponse: (res: GetProductsResponseItem[]) => {
+        return ProductAdapter.listToDomainCafeProduct(res).filter(({ favorite }) => favorite);
+      },
+    }),
   }),
 });
 
-const { useGetProductsCafeQuery, useLazyGetProductsCafeQuery, useGetProductQuery } = productApi;
+const {
+  useGetProductsCafeQuery,
+  useLazyGetProductsCafeQuery,
+  useGetProductQuery,
+  useGetFavoriteProductsListQuery,
+} = productApi;
 
-export { useGetProductsCafeQuery, useLazyGetProductsCafeQuery, useGetProductQuery, productApi };
+export {
+  useGetProductsCafeQuery,
+  useLazyGetProductsCafeQuery,
+  useGetProductQuery,
+  useGetFavoriteProductsListQuery,
+  productApi,
+};

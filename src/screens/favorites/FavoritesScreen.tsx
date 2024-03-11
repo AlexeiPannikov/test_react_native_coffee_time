@@ -3,6 +3,7 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import { DrawerParamList, FavoritesStackParamList, RootStackParamList, UiText } from '@/shared';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
+import { FavoriteProductsListWidget } from '@/widgets';
 
 type Props = CompositeScreenProps<
   StackScreenProps<FavoritesStackParamList, 'FavoriteList'>,
@@ -12,6 +13,6 @@ type Props = CompositeScreenProps<
   >
 >;
 
-export const FavoritesScreen = ({ navigation }: Props) => {
-  return <UiText type="headline1">Favorites</UiText>;
+export const FavoritesScreen = (props: Props) => {
+  return <FavoriteProductsListWidget {...props} />;
 };

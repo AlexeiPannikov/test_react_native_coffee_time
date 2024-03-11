@@ -9,6 +9,7 @@ const favoriteApi = baseApi.injectEndpoints({
         url: 'Favorite/Set',
         body: args,
       }),
+      invalidatesTags: ['FavoriteList'],
       onQueryStarted: async (req, { dispatch, queryFulfilled }) => {
         const patchResultGetProductsCafe = dispatch(
           productApi.util.updateQueryData('getProductsCafe', { cafeId: req.cafeId }, (draft) => {
@@ -59,12 +60,19 @@ const favoriteApi = baseApi.injectEndpoints({
             }
           }),
         );
+        const patchResultGetFavoriteProductsList = dispatch(
+          productApi.util.updateQueryData('getFavoriteProductsList', null, (draft) => {
+            draft = draft.filter((item) => item.id !== req.productId);
+            return draft;
+          }),
+        );
         dispatch(removeFromFavorite({ productId: req.productId }));
         try {
           await queryFulfilled;
         } catch {
           patchResultGetProductsCafe.undo();
           patchResultGetCafe.undo();
+          patchResultGetFavoriteProductsList.undo();
           dispatch(addToFavorite({ productId: req.productId }));
         }
       },

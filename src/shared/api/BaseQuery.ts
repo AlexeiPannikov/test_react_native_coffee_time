@@ -21,16 +21,17 @@ export const baseQueryWithReauth: BaseQueryFn<
   const credentials = await SecureStorage.getCredentials();
   if (!api.endpoint.includes('authorization') && !api.endpoint.includes('registration')) {
     if (typeof args === 'object' && 'body' in args) {
-      // console.log(api.endpoint);
+      console.log(api.endpoint);
       args.body = JSON.stringify({ ...args.body, sessionId: `${credentials?.sessionUuid}` });
-      // console.log(args.body);
+      console.log(args.body);
     }
     if (typeof args === 'object' && !('body' in args)) {
+      console.log(api.endpoint);
       args.body = JSON.stringify(JSON.parse(`"${credentials?.sessionUuid}"`));
     }
   }
   let result = await baseQuery(args, api, extraOptions);
-  // console.log(result.error);
+  console.log(result.data);
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
