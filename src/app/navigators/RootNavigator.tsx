@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { type RootStackParamList, SecureStorage, useTheme } from '@/shared';
-import { AuthNavigator } from '@app/navigators/AuthNavigator.tsx';
-import { CaffeListScreen, CaffeScreen, ProductScreen } from '@/screens';
+import { ChooseWayScreen, SignInScreen, SignUpScreen } from '@/screens';
 import { useAuth } from '@/features';
 import { useUser } from '@/entities';
-import { Header } from '@app/navigators/Header.tsx';
+import { DrawerNavigator } from '@app/navigators/DrawerNavigator.tsx';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const [initializing, setInitializing] = useState(true);
@@ -39,19 +38,22 @@ const RootNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: colors.background },
-        headerShadowVisible: false,
-        header: Header,
+        contentStyle: { backgroundColor: colors.background },
+        headerShown: false,
       }}
     >
       {!user ? (
-        <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }} />
+        <Stack.Group screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="Choose"
+            component={ChooseWayScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
+        </Stack.Group>
       ) : (
-        <>
-          <Stack.Screen name="CaffeList" component={CaffeListScreen} />
-          <Stack.Screen name="Caffe" component={CaffeScreen} />
-          <Stack.Screen name="Product" component={ProductScreen} />
-        </>
+        <Stack.Screen name="Main" component={DrawerNavigator} />
       )}
     </Stack.Navigator>
   );

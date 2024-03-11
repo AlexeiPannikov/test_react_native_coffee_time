@@ -1,10 +1,24 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { CafeListItem, useGetCafeListQuery } from '@/entities';
-import { NoData, RootStackParamList, useTheme } from '@/shared';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  DrawerParamList,
+  MainStackParamList,
+  NoData,
+  RootStackParamList,
+  useTheme,
+} from '@/shared';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
+type Props = CompositeScreenProps<
+  StackScreenProps<MainStackParamList, 'CaffeList'>,
+  CompositeScreenProps<
+    DrawerScreenProps<DrawerParamList, 'Home'>,
+    StackScreenProps<RootStackParamList, 'Main'>
+  >
+>;
 
 export const CafeListWidget = (props: Props) => {
   const { data, isLoading, refetch } = useGetCafeListQuery(null);

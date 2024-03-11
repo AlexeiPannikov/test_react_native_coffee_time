@@ -12,6 +12,7 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.6.1",
     "@react-native-community/geolocation": "^3.2.0",
+    "@react-navigation/drawer": "^6.6.12",
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",
     "@react-navigation/stack": "^6.3.25",

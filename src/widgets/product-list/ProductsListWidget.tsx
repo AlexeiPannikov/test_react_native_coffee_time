@@ -1,12 +1,20 @@
 import React from 'react';
 import { useGetProductsCafeQuery } from '@entities/product/api/ProductApi.ts';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { NoData, RootStackParamList } from '@/shared';
+import { DrawerParamList, MainStackParamList, NoData, RootStackParamList } from '@/shared';
 import { ProductListItem, useProduct } from '@/entities';
 import { AddToFavoriteProductButton } from '@/features';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-type NavigatePops = NativeStackScreenProps<RootStackParamList, 'Caffe'>;
+type NavigatePops = CompositeScreenProps<
+  StackScreenProps<MainStackParamList, 'Caffe'>,
+  CompositeScreenProps<
+    DrawerScreenProps<DrawerParamList, 'Home'>,
+    StackScreenProps<RootStackParamList, 'Main'>
+  >
+>;
 
 interface IProps extends NavigatePops {
   cafeId: string;

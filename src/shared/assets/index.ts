@@ -16,3 +16,4 @@ export { default as TemperatureIcon } from './images/icon_temperature.png';
 export { default as WaterIcon } from './images/icon_water.png';
 export { default as HitIcon } from './images/hit.png';
 export { default as MyLocationIcon } from './images/location.png';
+export { default as MenuIcon } from './images/menu-icon.svg';

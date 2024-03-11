@@ -1,12 +1,25 @@
 import React, { useRef, useState } from 'react';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList, staticVerticalScale } from '@/shared';
+import {
+  DrawerParamList,
+  MainStackParamList,
+  RootStackParamList,
+  staticVerticalScale,
+} from '@/shared';
 import PagerView from 'react-native-pager-view';
 import { View, StyleSheet, NativeSyntheticEvent } from 'react-native';
 import { PagesSwitcher } from '@screens/caffe-list/PagesSwitcher.tsx';
 import { CafeListWidget, CafeMapWidget } from '@/widgets';
+import { StackScreenProps } from '@react-navigation/stack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
+type Props = CompositeScreenProps<
+  StackScreenProps<MainStackParamList, 'CaffeList'>,
+  CompositeScreenProps<
+    DrawerScreenProps<DrawerParamList, 'Home'>,
+    StackScreenProps<RootStackParamList, 'Main'>
+  >
+>;
 
 export const CaffeListScreen = (props: Props) => {
   const [page, setPage] = useState<0 | 1>(1);

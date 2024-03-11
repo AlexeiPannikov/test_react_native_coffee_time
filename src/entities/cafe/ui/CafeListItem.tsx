@@ -1,5 +1,7 @@
 import { Cafe } from '@entities/cafe/model/Cafe.ts';
 import {
+  DrawerParamList,
+  MainStackParamList,
   RightChevronIcon,
   RootStackParamList,
   staticModerateScale,
@@ -10,9 +12,17 @@ import {
 } from '@/shared';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CaffeList'>;
+type Props = CompositeScreenProps<
+  StackScreenProps<MainStackParamList, 'CaffeList'>,
+  CompositeScreenProps<
+    DrawerScreenProps<DrawerParamList, 'Home'>,
+    StackScreenProps<RootStackParamList, 'Main'>
+  >
+>;
 
 interface CafeListItemProps extends Props {
   cafe: Cafe;

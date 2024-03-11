@@ -1,35 +1,24 @@
-import { StackHeaderProps } from '@react-navigation/stack';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import {
-  IconBack,
-  staticModerateScale,
-  staticVerticalScale,
-  UiText,
-  useHaptic,
-  useTheme,
-} from '@/shared';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { MenuIcon, staticModerateScale, staticVerticalScale, UiText, useTheme } from '@/shared';
 import React from 'react';
+import { DrawerHeaderProps } from '@react-navigation/drawer';
 
-export const Header = ({ navigation, progress }: StackHeaderProps) => {
+export const DrawerHeader = ({ navigation }: DrawerHeaderProps) => {
   const {
     theme: { font, colors },
   } = useTheme();
-  const { selectionTrigger } = useHaptic();
 
   return (
-    <View style={styles.container}>
-      {progress.previous && (
-        <Pressable
-          hitSlop={20}
-          style={styles.iconBack}
-          onPress={() => {
-            selectionTrigger();
-            navigation.goBack();
-          }}
-        >
-          <Image source={IconBack} />
-        </Pressable>
-      )}
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <TouchableOpacity
+        hitSlop={20}
+        style={styles.iconBack}
+        onPress={() => {
+          navigation.toggleDrawer();
+        }}
+      >
+        <MenuIcon width={staticModerateScale(20)} height={staticModerateScale(20)} />
+      </TouchableOpacity>
       <UiText
         style={[
           styles.title,

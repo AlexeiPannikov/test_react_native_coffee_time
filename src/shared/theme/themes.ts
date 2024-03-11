@@ -11,6 +11,8 @@ export interface ITheme {
   colors: {
     primary: string;
     onPrimary: string;
+    primaryContainer: string;
+    onPrimaryContainer: string;
     background: string;
     onBackground: string;
     onBackgroundVariant: string;
@@ -42,6 +44,8 @@ export const lightTheme: ITheme = {
   colors: {
     primary: '#B3C39C',
     onPrimary: '#ffffff',
+    primaryContainer: '#b3c39c66',
+    onPrimaryContainer: '#717171',
     background: '#ffffff',
     onBackground: '#717171',
     onBackgroundVariant: '#BBBBBB',

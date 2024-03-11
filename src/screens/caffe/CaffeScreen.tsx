@@ -1,12 +1,20 @@
 import React from 'react';
 import { RefreshControl, ScrollView } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList, useTheme } from '@/shared';
+import { DrawerParamList, MainStackParamList, RootStackParamList, useTheme } from '@/shared';
 import { CafeImageWithTitle, useLazyGetCafeQuery, useLazyGetProductsCafeQuery } from '@/entities';
 import { FilterProductsByFavoritesSwitch } from '@/features';
 import { ProductListWidget } from '@/widgets';
+import { StackScreenProps } from '@react-navigation/stack';
+import { CompositeScreenProps } from '@react-navigation/native';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Caffe'>;
+type Props = CompositeScreenProps<
+  StackScreenProps<MainStackParamList, 'Caffe'>,
+  CompositeScreenProps<
+    DrawerScreenProps<DrawerParamList, 'Home'>,
+    StackScreenProps<RootStackParamList, 'Main'>
+  >
+>;
 
 export const CaffeScreen = (props: Props) => {
   const [triggerCafe, dataCafe] = useLazyGetCafeQuery();
