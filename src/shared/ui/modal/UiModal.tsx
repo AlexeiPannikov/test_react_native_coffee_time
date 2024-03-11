@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Modal, ModalProps, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { staticModerateScale, useResponsiveSizes, useTheme } from '@/shared';
+import { useTheme } from '@shared/theme';
+import { staticModerateScale, useResponsiveSizes } from '@shared/utils';
 
 interface IProps extends ModalProps {
   onConfirm: () => void;
