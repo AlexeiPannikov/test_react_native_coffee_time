@@ -19,7 +19,7 @@ export const FilledButton = (props: IButtonCommonPropsWithChildren) => {
       ]}
     >
       <TouchableOpacity
-        activeOpacity={0.8}
+        activeOpacity={0.4}
         style={[styles.container, { backgroundColor: props.color || colors.primary }]}
         disabled={props.disabled || props.loading}
         onPress={() => {
