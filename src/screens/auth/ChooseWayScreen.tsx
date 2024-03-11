@@ -1,10 +1,10 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthStackParamList, UiButton } from '@/shared';
+import { RootStackParamList, UiButton } from '@/shared';
 import { AuthScreenTemplate } from '@screens/auth/AuthScreenTemplate.tsx';
 import { StyleSheet, View } from 'react-native';
 
-type Props = NativeStackScreenProps<AuthStackParamList, 'Choose'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Choose'>;
 
 export const ChooseWayScreen = ({ navigation: { navigate } }: Props) => {
   return (
